@@ -8,3 +8,8 @@ $DOTFILES_HOME = $HOME
 $DOTFILES_GIT_DIR = ".powershell_dotfiles"
 function dotfiles { git --git-dir=$DOTFILES_HOME/$DOTFILES_GIT_DIR/ --work-tree=$DOTFILES_HOME $args }
 
+# PSFzf setup
+# fh = alias for fzf command history
+Set-PSFzfOption -EnableAliasFuzzyHistory
+# fcd = alias for fzf cd
+function fcd { Invoke-FuzzySetLocation }
