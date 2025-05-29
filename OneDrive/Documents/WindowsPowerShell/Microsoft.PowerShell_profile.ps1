@@ -4,6 +4,7 @@ echo "loading profile.ps1..."
 function admin { Start-Process wt powershell -Verb runAs }
 function vim { nvim $args }
 function lg { lazygit $args }
+function q { exit $args }
 
 # dotfiles location aliases
 function nvimrc { cd ~\AppData\Local\nvim }
