@@ -5,6 +5,7 @@ function admin { Start-Process wt powershell -Verb runAs }
 function vim { nvim $args }
 function lg { lazygit $args }
 function q { exit $args }
+function c { clear $args }
 
 # dotfiles location aliases
 function nvimrc { cd ~\AppData\Local\nvim }
