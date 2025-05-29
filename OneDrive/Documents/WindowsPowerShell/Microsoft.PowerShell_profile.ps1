@@ -1,8 +1,17 @@
 echo "loading profile.ps1..."
 
+# general aliases
+function admin { Start-Process wt powershell -Verb runAs }
+function vim { nvim $args }
+function lg { lazygit $args }
+
+# dotfiles location aliases
+function nvimrc { cd ~\AppData\Local\nvim }
+function lazygitrc { cd ~\AppData\Local\lazygit }
+
+# project aliases
 function obsidian { cd D:\Documents\SelfProjects\obsidian-vault }
 function 9cat { cd D:\Documents\UnityProjects\9cat-2d-2 }
-function nvimrc { cd ~\AppData\Local\nvim }
 
 # dotfile management
 $DOTFILES_HOME = $HOME
