@@ -14,8 +14,9 @@ function nvimrc { cd ~\AppData\Local\nvim }
 function lazygitrc { cd ~\AppData\Local\lazygit }
 
 # project aliases
-function obsidian { cd D:\Documents\SelfProjects\obsidian-vault }
-function 9cat { cd D:\Documents\UnityProjects\9cat-2d-2 }
+# (no longer needed with zoxide😂)
+# function obsidian { cd D:\Documents\SelfProjects\obsidian-vault }
+# function 9cat { cd D:\Documents\UnityProjects\9cat-2d-2 }
 
 # dotfile management
 $DOTFILES_HOME = $HOME
@@ -28,7 +29,7 @@ Set-PSFzfOption -EnableAliasFuzzyHistory
 # fcd = alias for fzf cd
 function fcd { Invoke-FuzzySetLocation }
 
-# yazi - y shell wrapper
+# yazi - y shell wrapper - use the y command to use yazi
 # https://yazi-rs.github.io/docs/quick-start#shell-wrapper
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
@@ -39,3 +40,7 @@ function y {
     }
     Remove-Item -Path $tmp
 }
+
+# zoxide setup - z shell wrapper - use the z command to use zoxide
+# https://github.com/ajeetdsouza/zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
