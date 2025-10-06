@@ -56,6 +56,7 @@ config.colors = {
 
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
 
 config.window_frame = {
 	active_titlebar_bg = my_theme.background,
