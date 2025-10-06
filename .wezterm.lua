@@ -11,48 +11,47 @@ config.default_prog = { "pwsh.exe", "-NoLogo" }
 -- config.font = wezterm.font("JetBrains Mono")
 config.font = wezterm.font("FiraMono Nerd Font Mono")
 
--- 1. Get all built-in color schemes
-local all_schemes = wezterm.color.get_builtin_schemes()
-
--- 2. Extract the "rose-pine-dawn" scheme into your local variable
-local my_theme = all_schemes["rose-pine-dawn"]
-
--- 3. Assign the theme to the main color scheme config
 config.color_scheme = "rose-pine-dawn"
 
--- 4. Now, reuse the colors from `my_theme` to style the tab bar.
---    You can reference colors by their standard names.
+local all_schemes = wezterm.color.get_builtin_schemes()
+local my_theme = all_schemes["rose-pine-dawn"]
 config.colors = {
 	tab_bar = {
+		-- Set a single background color for the entire tab bar
 		background = my_theme.background,
 
 		active_tab = {
-			bg_color = my_theme.ansi[6], -- Using Cyan from the scheme
-			fg_color = my_theme.background,
-			intensity = "Bold",
+			-- Active tab: use background color for background, bright color for text
+			bg_color = my_theme.background,
+			fg_color = my_theme.ansi[4], -- Blue for active tab
 		},
 
 		inactive_tab = {
+			-- Inactive tab: use background color for background, muted color for text
 			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[7], -- Using White/Gray from the scheme
+			fg_color = my_theme.ansi[8], -- Muted gray for inactive tabs
 		},
 
 		inactive_tab_hover = {
-			bg_color = my_theme.brights[6], -- Using Bright Cyan
-			fg_color = my_theme.background,
+			-- Hover state: use a different color on hover
+			bg_color = my_theme.background,
+			fg_color = my_theme.ansi[6], -- Cyan for hover
 		},
 
 		new_tab = {
 			bg_color = my_theme.background,
-			fg_color = my_theme.foreground,
+			fg_color = my_theme.ansi[8], -- Muted gray for new tab button
 		},
 
 		new_tab_hover = {
-			bg_color = my_theme.ansi[2], -- Using Green for the '+' button hover
-			fg_color = my_theme.background,
+			bg_color = my_theme.background,
+			fg_color = my_theme.ansi[2], -- Green for new tab button hover
 		},
 	},
 }
+
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 config.window_frame = {
 	-- Set the active (focused) frame background
@@ -63,10 +62,13 @@ config.window_frame = {
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
--- Other optional settings
-config.hide_tab_bar_if_only_one_tab = true
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
+}
 
--- Finally, return the configuration to wezterm:
 return config
 
 -- keybinding notes:
