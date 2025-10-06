@@ -1,20 +1,35 @@
--- Pull in the wezterm API
-local wezterm = require("wezterm")
+-- keybinding notes:
+--
+-- tabs
+-- ctrl shift t = new tab
+-- ctrl shift w = close tab
+-- ctrl shift 1/2/3 = go to tab 1/2/3
 
--- This will hold the configuration.
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices.
+--
+
+-- FONT
+
+-- local font_name = "JetBrains Mono"
+local font_name = "FiraMono Nerd Font Mono"
+
+-- COLOR THEME
+
+local theme_name = "rose-pine-dawn"
+-- local theme_name = "rose-pine-moon"
+
+--
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
--- config.font = wezterm.font("JetBrains Mono")
-config.font = wezterm.font("FiraMono Nerd Font Mono")
+config.font = wezterm.font(font_name)
 
-config.color_scheme = "rose-pine-dawn"
+config.color_scheme = theme_name
 
 local all_schemes = wezterm.color.get_builtin_schemes()
-local my_theme = all_schemes["rose-pine-dawn"]
+local my_theme = all_schemes[theme_name]
 config.colors = {
 	tab_bar = {
 		-- Set a single background color for the entire tab bar
@@ -62,7 +77,7 @@ config.window_frame = {
 	active_titlebar_bg = my_theme.background,
 	inactive_titlebar_bg = my_theme.background,
 	font = wezterm.font({
-		family = "FiraMono Nerd Font Mono",
+		family = font_name,
 	}),
 }
 
@@ -76,10 +91,3 @@ config.window_padding = {
 }
 
 return config
-
--- keybinding notes:
---
--- tabs
--- ctrl shift t = new tab
--- ctrl shift w = close tab
--- ctrl shift 1/2/3 = go to tab 1/2/3
