@@ -58,10 +58,11 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 config.window_frame = {
-	-- Set the active (focused) frame background
 	active_titlebar_bg = my_theme.background,
-	-- Set the inactive (unfocused) frame background
 	inactive_titlebar_bg = my_theme.background,
+	font = wezterm.font({
+		family = "FiraMono Nerd Font Mono",
+	}),
 }
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
