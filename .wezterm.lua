@@ -21,31 +21,35 @@ config.colors = {
 		background = my_theme.background,
 
 		active_tab = {
-			-- Active tab: use background color for background, bright color for text
-			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[4], -- Blue for active tab
+			bg_color = my_theme.background, -- white
+			-- fg_color = my_theme.foreground, -- dark gray
+			-- fg_color = my_theme.ansi[2], -- pink,
+			-- fg_color = my_theme.ansi[3], -- blue,
+			-- fg_color = my_theme.ansi[4], -- yellow
+			-- fg_color = my_theme.ansi[5], -- dark blue,
+			-- fg_color = my_theme.ansi[6], -- purple,
+			fg_color = my_theme.ansi[7], -- light pink,
+			-- fg_color = my_theme.ansi[8], -- dark purple,
 		},
 
 		inactive_tab = {
-			-- Inactive tab: use background color for background, muted color for text
 			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[8], -- Muted gray for inactive tabs
+			fg_color = my_theme.ansi[6],
 		},
 
 		inactive_tab_hover = {
-			-- Hover state: use a different color on hover
 			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[6], -- Cyan for hover
+			fg_color = my_theme.ansi[4],
 		},
 
 		new_tab = {
 			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[8], -- Muted gray for new tab button
+			fg_color = my_theme.ansi[6],
 		},
 
 		new_tab_hover = {
 			bg_color = my_theme.background,
-			fg_color = my_theme.ansi[2], -- Green for new tab button hover
+			fg_color = my_theme.ansi[4],
 		},
 	},
 }
