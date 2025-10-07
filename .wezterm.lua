@@ -25,6 +25,55 @@ local theme_name = dark_theme_name -- fallback
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
+-- CUSTOM KEYBINDS
+-- (replicating tmux default keybinds)
+
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
+config.keys = {
+	{
+		key = "c",
+		mods = "LEADER",
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		key = "s",
+		mods = "LEADER",
+		action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }),
+	},
+	{
+		-- Prompt for a name to use for a new workspace and switch to it.
+		key = "N",
+		mods = "LEADER",
+		action = wezterm.action.PromptInputLine({
+			description = wezterm.format({
+				{ Text = "Enter name for new workspace" },
+			}),
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:perform_action(
+						wezterm.action.SwitchToWorkspace({
+							name = line,
+						}),
+						pane
+					)
+				end
+			end),
+		}),
+	},
+}
+for i = 1, 8 do
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "LEADER",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
+
+-- FONTS & APPEARANCE
+
 config.font = wezterm.font(font_name)
 
 -- https://wezterm.org/config/lua/wezterm.gui/get_appearance.html
