@@ -17,14 +17,34 @@ local font_name = "FiraMono Nerd Font Mono"
 
 -- COLOR THEME
 
-local theme_name = "rose-pine-dawn"
--- local theme_name = "rose-pine-moon"
+local light_theme_name = "rose-pine-dawn"
+local dark_theme_name = "rose-pine-moon"
+local theme_name = dark_theme_name -- fallback
 
 --
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.font = wezterm.font(font_name)
+
+-- https://wezterm.org/config/lua/wezterm.gui/get_appearance.html
+
+function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return dark_theme_name
+	else
+		return light_theme_name
+	end
+end
+
+theme_name = scheme_for_appearance(get_appearance())
 
 config.color_scheme = theme_name
 

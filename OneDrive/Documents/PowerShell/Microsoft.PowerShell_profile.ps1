@@ -1,4 +1,4 @@
-echo "loading profile.ps1..."
+# echo "loading profile.ps1..."
 
 # general aliases
 function admin { Start-Process wt pwsh -Verb runAs }
